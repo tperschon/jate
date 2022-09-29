@@ -19,6 +19,7 @@ butInstall.addEventListener('click', async () => {
     deferredPrompt.prompt();
     // reset the stored event so we don't use it again by mistake
     window.deferredPrompt = null;
+    butInstall.classList.toggle('hidden', true);
 });
 
 window.addEventListener('appinstalled', (event) => {
