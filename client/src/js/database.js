@@ -1,9 +1,7 @@
 import { openDB } from 'idb';
-// version number we're using
-const ver = 1;
 
 const initdb = async () =>
-  openDB('jate', ver, {
+  openDB('jate', 1, {
     upgrade(db) {
       if (db.objectStoreNames.contains('jate')) {
         console.log('jate database already exists');
@@ -17,12 +15,13 @@ const initdb = async () =>
 // function to POST to db
 export const putDb = async (content) => {
   // create db connection with version #
-  const jateDb = await openDB('jate', ver);
+  const jateDb = await openDB('jate', 1);
   // create transaction with privileges, initialize object store with it
   const trans = jateDb.transaction('jate', 'readwrite');
   const store = trans.objectStore('jate');
+  console.log("CONTENT: ", content)
   // pass in the content, await so we can post to log after
-  const result = await store.add({ content: content });
+  const result = await store.put(content);
   // post result to log
   console.log('Data saved: ', result);
 };
@@ -30,7 +29,7 @@ export const putDb = async (content) => {
 // function to GET from db
 export const getDb = async () => {
   // create db connection with version #
-  const jateDb = await openDB('jate', ver);
+  const jateDb = await openDB('jate', 1);
   // create transaction with privileges, initialize object store with it
   const trans = jateDb.transaction('jate', 'readonly');
   const store = trans.objectStore('jate');
