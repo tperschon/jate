@@ -4,11 +4,10 @@ const butInstall = document.getElementById('buttonInstall');
 window.addEventListener('beforeinstallprompt', (event) => {
     // store triggering event
     window.deferredPrompt = event;
-    // remove hidden from button so it shows
-    butInstall.classList.toggle('hidden', false);
 });
 
 butInstall.addEventListener('click', async () => {
+    console.log('the button was clicked');
     // retrieve stored event
     const deferredPrompt = window.deferredPrompt;
     // if nothing was retrieved, end the function now
@@ -24,6 +23,4 @@ butInstall.addEventListener('click', async () => {
 window.addEventListener('appinstalled', (event) => {
     // reset the stored event so we dont use it again, may be redundant with other reset
     window.deferredPrompt = null;
-    // hide button when app is installed
-    butInstall.classList.toggle('hidden', true);
 });

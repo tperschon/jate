@@ -32,10 +32,10 @@ export const getDb = async () => {
   // create transaction with privileges, initialize object store with it
   const trans = jateDb.transaction('jate', 'readonly');
   const store = trans.objectStore('jate');
-  // get all the data, awaiting so we can post to log after
-  const result = await store.get(1);
+  // get only the first key from the data
+  const result = await store.getAll();
   // WE HAVE TO ONLY RETURN THE MOST RECENT ENTRY
-  return result[0];
+  return result[0].editor;
 };
 
 initdb();
