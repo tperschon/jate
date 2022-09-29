@@ -14,7 +14,7 @@ module.exports = () => {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
-    // generate and inject html/bundles
+    // generate and inject html/bundles, service worker, pwa manifest
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
@@ -27,9 +27,11 @@ module.exports = () => {
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
+        name: 'Just Another Text Editor',
+        short_name: 'JATE',
         background_color: '#225ca3',
         theme_color: '#225ca3',
-        start_url: './',
+        start_url: './index.html',
         publicPath: './',
         icons: [
           {
@@ -40,8 +42,8 @@ module.exports = () => {
         ],
       }),
     ],
-
     module: {
+      // load css, node modules or bower components
       rules: [
         {
           test: /\.css$/i,
