@@ -20,7 +20,6 @@ A text editor that runs in-browser and works offline
 # Installation
 ```
 If you don't already have node.js, install node.js
-If you don't already have mysql installed, this also must be installed
 Navigate to the project directory via a command line interface such as bash, powershell, or zshell
 ```
 ```
