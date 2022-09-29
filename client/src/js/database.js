@@ -21,7 +21,7 @@ export const putDb = async (content) => {
   const store = trans.objectStore('jate');
   console.log("CONTENT: ", content)
   // pass in the content, await so we can post to log after
-  const result = await store.put(content);
+  const result = await store.put({ editor: content });
   // post result to log
   console.log('Data saved: ', result);
 };
@@ -34,9 +34,10 @@ export const getDb = async () => {
   const trans = jateDb.transaction('jate', 'readonly');
   const store = trans.objectStore('jate');
   // get all the data, awaiting so we can post to log after
-  const result = await store.getAll();
+  const result = await store.get(1);
   console.log('Result: ', result);
-  return result;
+  // WE HAVE TO ONLY RETURN THE MOST RECENT ENTRY
+  return result[0];
 };
 
 initdb();
