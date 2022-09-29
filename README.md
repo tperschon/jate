@@ -33,6 +33,7 @@ To start the application, run the command 'npm start'
 Test the application's ability using your browser, navigate to localhost:3000 to see the app
 ```
 You can also see the app live hosted on Heroku here: [jate on heroku](https://rocky-peak-76239.herokuapp.com/)
+![The app being hosted on Heroku as well as being installed on a PC](./images/jateboth.png)
 # Contributing
 If you would like to contribute to the project, it can be found here: [jate](https://github.com/tperschon/jate)
 # Questions
