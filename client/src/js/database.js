@@ -19,7 +19,6 @@ export const putDb = async (content) => {
   // create transaction with privileges, initialize object store with it
   const trans = jateDb.transaction('jate', 'readwrite');
   const store = trans.objectStore('jate');
-  console.log("CONTENT: ", content)
   // pass in the content, await so we can post to log after
   const result = await store.put({ editor: content });
   // post result to log
@@ -35,7 +34,6 @@ export const getDb = async () => {
   const store = trans.objectStore('jate');
   // get all the data, awaiting so we can post to log after
   const result = await store.get(1);
-  console.log('Result: ', result);
   // WE HAVE TO ONLY RETURN THE MOST RECENT ENTRY
   return result[0];
 };
